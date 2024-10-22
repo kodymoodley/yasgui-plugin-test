@@ -2,37 +2,31 @@
 function createGUI(event) {
   event.stopPropagation();
   // Create the main container
-  const mainContent = document.createElement('div');
+  let mainContent = document.createElement('div');
   mainContent.id = 'main-content';
   
   let yasqeButtonsEl = document.getElementsByClassName("yasqe_buttons")[0];
   yasqeButtonsEl.appendChild(mainContent);
   
+  document.body.addEventListener(
+    "click",
+    (event) => {
+        if (mainContent && event.target !== mainContent && !mainContent.contains(event.target)) {
+            mainContent.remove();
+            mainContent = undefined;
+        }
+    },
+    true
+  );
+
+
   if (!yasqeButtonsEl) {
     console.log('yasqe_buttons element not found!');
   }
-  
+
   // Create the flexbox container
   const flexbox = document.createElement('div');
   flexbox.id = 'flexbox';
-  
-  // Create the left pane
-  const leftPane = document.createElement('div');
-  leftPane.classList.add('left');
-  
-  // SPARQL Endpoint URL Label and Input
-  const endpointLabel = document.createElement('label');
-  endpointLabel.setAttribute('for', 'endpoint-url');
-  endpointLabel.textContent = 'SPARQL Endpoint URL';
-  
-  const endpointInput = document.createElement('input');
-  endpointInput.type = 'text';
-  endpointInput.id = 'endpoint-url';
-  endpointInput.value = 'https://dbpedia.org/sparql';
-  endpointInput.placeholder = 'Endpoint URL';
-  
-  leftPane.appendChild(endpointLabel);
-  leftPane.appendChild(endpointInput);
   
   // Filters container
   const filterContainer = document.createElement('div');
@@ -114,52 +108,9 @@ function createGUI(event) {
   attributeFilters.appendChild(addFilterButton);
   filterContainer.appendChild(attributeFilters);
   
-  leftPane.appendChild(filterContainer);
-  
-  // Adding the left pane to the flexbox
-  flexbox.appendChild(leftPane);
-  
-  // Creating the right pane
-  const rightPane = document.createElement('div');
-  rightPane.classList.add('right');
-  
-  const sparqlQueryHeading = document.createElement('h3');
-  sparqlQueryHeading.textContent = 'SPARQL Query';
-  
-  const sparqlQueryDiv = document.createElement('div');
-  sparqlQueryDiv.id = 'sparql-query';
-  
-  rightPane.appendChild(sparqlQueryHeading);
-  rightPane.appendChild(sparqlQueryDiv);
-  
-  flexbox.appendChild(rightPane);
-  
-  // Append flexbox to the main content
+  flexbox.appendChild(filterContainer);
   mainContent.appendChild(flexbox);
   
-  // Create the results section
-  const resultsContent = document.createElement('div');
-  resultsContent.classList.add('results-content');
-  
-  const resultsHeading = document.createElement('h3');
-  resultsHeading.textContent = 'Query Results';
-  
-  const inputLoaderContainerResults = document.createElement('div');
-  inputLoaderContainerResults.classList.add('input-loader-container');
-  
-  const resultsDiv = document.createElement('div');
-  resultsDiv.id = 'results';
-  
-  inputLoaderContainerResults.appendChild(resultsDiv);
-  resultsContent.appendChild(resultsHeading);
-  resultsContent.appendChild(inputLoaderContainerResults);
-  
-  // Append results content to main content
-  mainContent.appendChild(resultsContent);
-  
-  // Finally, add the main content to the body
-  // document.body.appendChild(mainContent);
-
   return mainContent;
 }
 
