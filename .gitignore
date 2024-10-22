@@ -1,5 +1,4 @@
 # Logs
-.DS_Store
 logs
 *.log
 npm-debug.log*
@@ -38,6 +37,10 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+
+# Local shit
+.idea
+.DS_Store
 
 # Dependency directories
 node_modules/
