@@ -1,25 +1,12 @@
-
 function createGUI(event) {
-  event.stopPropagation();
+  // event.stopPropagation();
   // Create the main container
   let mainContent = document.createElement('div');
   mainContent.id = 'main-content';
-  
+
   let yasqeButtonsEl = document.getElementsByClassName("yasqe_buttons")[0];
   yasqeButtonsEl.appendChild(mainContent);
   
-  document.body.addEventListener(
-    "click",
-    (event) => {
-        if (mainContent && event.target !== mainContent && !mainContent.contains(event.target)) {
-            mainContent.remove();
-            mainContent = undefined;
-        }
-    },
-    true
-  );
-
-
   if (!yasqeButtonsEl) {
     console.log('yasqe_buttons element not found!');
   }
@@ -27,90 +14,101 @@ function createGUI(event) {
   // Create the flexbox container
   const flexbox = document.createElement('div');
   flexbox.id = 'flexbox';
+
+  const testYasqeButton = document.createElement('button');
+  testYasqeButton.classList.add('testyasqe');
+  testYasqeButton.textContent = 'Test YASQE editing';
   
+  // testYasqeButton.addEventListener("click", (event) => {
+  //   event.stopPropagation();
+  //   console.log('got here - test button!');
+  //   // tab.setQuery('PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT * WHERE { ?kody ?kody ?kody . } LIMIT 100');
+  // });
+
+  flexbox.appendChild(testYasqeButton);
   // Filters container
-  const filterContainer = document.createElement('div');
-  filterContainer.id = 'filter-container';
+  // const filterContainer = document.createElement('div');
+  // filterContainer.id = 'filter-container';
   
-  // Attribute Filters section
-  const attributeLabelHeader = document.createElement('div');
-  attributeLabelHeader.classList.add('labelheader');
+  // // Attribute Filters section
+  // const attributeLabelHeader = document.createElement('div');
+  // attributeLabelHeader.classList.add('labelheader');
   
-  const attributeLabelDiv = document.createElement('div');
-  attributeLabelDiv.classList.add('lbl');
+  // const attributeLabelDiv = document.createElement('div');
+  // attributeLabelDiv.classList.add('lbl');
   
-  const attributeLabel = document.createElement('label');
-  attributeLabel.textContent = 'Attribute Filters';
+  // const attributeLabel = document.createElement('label');
+  // attributeLabel.textContent = 'Attribute Filters';
   
-  attributeLabelDiv.appendChild(attributeLabel);
-  attributeLabelHeader.appendChild(attributeLabelDiv);
+  // attributeLabelDiv.appendChild(attributeLabel);
+  // attributeLabelHeader.appendChild(attributeLabelDiv);
   
-  const toggleButton = document.createElement('button');
-  toggleButton.classList.add('toggle-button');
-  toggleButton.setAttribute('data-target', '#attribute-filters');
-  toggleButton.textContent = '−';
+  // const toggleButton = document.createElement('button');
+  // toggleButton.classList.add('toggle-button');
+  // toggleButton.setAttribute('data-target', '#attribute-filters');
+  // toggleButton.textContent = '−';
   
-  attributeLabelHeader.appendChild(toggleButton);
-  filterContainer.appendChild(attributeLabelHeader);
+  // attributeLabelHeader.appendChild(toggleButton);
+  // filterContainer.appendChild(attributeLabelHeader);
   
-  const attributeFilters = document.createElement('div');
-  attributeFilters.id = 'attribute-filters';
-  attributeFilters.classList.add('collapsible');
+  // const attributeFilters = document.createElement('div');
+  // attributeFilters.id = 'attribute-filters';
+  // attributeFilters.classList.add('collapsible');
   
-  const attributeFiltersSection = document.createElement('div');
-  attributeFiltersSection.id = 'attribute-filters-section';
+  // const attributeFiltersSection = document.createElement('div');
+  // attributeFiltersSection.id = 'attribute-filters-section';
   
-  // Creating a single filter entry as a template
-  const searchFilter = document.createElement('div');
-  searchFilter.classList.add('search-filter');
+  // // Creating a single filter entry as a template
+  // const searchFilter = document.createElement('div');
+  // searchFilter.classList.add('search-filter');
   
-  const inputLoaderContainer1 = document.createElement('div');
-  inputLoaderContainer1.classList.add('input-loader-container');
+  // const inputLoaderContainer1 = document.createElement('div');
+  // inputLoaderContainer1.classList.add('input-loader-container');
   
-  const predicateInput = document.createElement('input');
-  predicateInput.type = 'text';
-  predicateInput.id = 'predicate-0';
-  predicateInput.classList.add('predicate');
-  predicateInput.placeholder = 'Attribute';
+  // const predicateInput = document.createElement('input');
+  // predicateInput.type = 'text';
+  // predicateInput.id = 'predicate-0';
+  // predicateInput.classList.add('predicate');
+  // predicateInput.placeholder = 'Attribute';
   
-  inputLoaderContainer1.appendChild(predicateInput);
-  searchFilter.appendChild(inputLoaderContainer1);
+  // inputLoaderContainer1.appendChild(predicateInput);
+  // searchFilter.appendChild(inputLoaderContainer1);
   
-  const inputLoaderContainer2 = document.createElement('div');
-  inputLoaderContainer2.classList.add('input-loader-container');
+  // const inputLoaderContainer2 = document.createElement('div');
+  // inputLoaderContainer2.classList.add('input-loader-container');
   
-  const objectInput = document.createElement('input');
-  objectInput.type = 'text';
-  objectInput.id = 'object-0';
-  objectInput.classList.add('object');
-  objectInput.placeholder = 'Value';
+  // const objectInput = document.createElement('input');
+  // objectInput.type = 'text';
+  // objectInput.id = 'object-0';
+  // objectInput.classList.add('object');
+  // objectInput.placeholder = 'Value';
   
-  inputLoaderContainer2.appendChild(objectInput);
-  searchFilter.appendChild(inputLoaderContainer2);
+  // inputLoaderContainer2.appendChild(objectInput);
+  // searchFilter.appendChild(inputLoaderContainer2);
   
-  const deleteButtonDiv = document.createElement('div');
-  deleteButtonDiv.classList.add('delete-filter-comp');
+  // const deleteButtonDiv = document.createElement('div');
+  // deleteButtonDiv.classList.add('delete-filter-comp');
   
-  const deleteButton = document.createElement('button');
-  deleteButton.classList.add('delete-filter');
-  deleteButton.textContent = 'X';
+  // const deleteButton = document.createElement('button');
+  // deleteButton.classList.add('delete-filter');
+  // deleteButton.textContent = 'X';
   
-  deleteButtonDiv.appendChild(deleteButton);
-  searchFilter.appendChild(deleteButtonDiv);
+  // deleteButtonDiv.appendChild(deleteButton);
+  // searchFilter.appendChild(deleteButtonDiv);
   
-  attributeFiltersSection.appendChild(searchFilter);
-  attributeFilters.appendChild(attributeFiltersSection);
+  // attributeFiltersSection.appendChild(searchFilter);
+  // attributeFilters.appendChild(attributeFiltersSection);
   
-  const addFilterButton = document.createElement('button');
-  addFilterButton.id = 'add-filter';
-  addFilterButton.textContent = '+';
+  // const addFilterButton = document.createElement('button');
+  // addFilterButton.id = 'add-filter';
+  // addFilterButton.textContent = '+';
   
-  attributeFilters.appendChild(addFilterButton);
-  filterContainer.appendChild(attributeFilters);
+  // attributeFilters.appendChild(addFilterButton);
+  // filterContainer.appendChild(attributeFilters);
   
-  flexbox.appendChild(filterContainer);
+  // flexbox.appendChild(filterContainer);
   mainContent.appendChild(flexbox);
-  
+  console.log('returning GUI...');
   return mainContent;
 }
 

@@ -5,11 +5,17 @@
     padding: 0;
 }
 
+.testyasqe {
+    width: 200px;
+    height: 30px;
+}
+
 #flexbox {
     display: flex;
     overflow: auto;
     background-color: #F1F8E8;
     padding: 15px;
+    height: 60px;
 }
 
 /* Body styles */
